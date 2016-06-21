@@ -1,4 +1,19 @@
-KSOAP
-http://simpligility.github.io/ksoap2-android/getting-started.html
-http://helpdev.com.br/2015/07/10/android-studio-gradle-adicionando-ksoap2-como-dependencia-adding-ksoap-dependency-to-gradle-project/
+KSOAP2
 
+    http://simpligility.github.io/ksoap2-android/getting-started.html
+    http://helpdev.com.br/2015/07/10/android-studio-gradle-adicionando-ksoap2-como-dependencia-adding-ksoap-dependency-to-gradle-project/
+
+    BUILD.GRADLE PROYECTO
+    repositories {
+            // OTROS REPOS EXISTENTES
+            maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
+            // COPIAMOS LA LINEA DE ARRIBA DENTRO DE REPOSITORIES - EL REPO HAY QUE COPIARLO A BUILDSCRIPTS Y
+            // ALLPROJECTS
+    }
+
+    BUILD.GRADLE APP
+    dependencies {
+        // OTRAS DEPENDENCIAS EXISTENTES
+        // AÑADIMOS LA LINEA CON LA DEPENDENCIA  A KSOAP2
+        compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.1'
+    }
