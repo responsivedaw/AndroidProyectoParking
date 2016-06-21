@@ -6,5 +6,6 @@ package apptizer.es.androidproyectoparking.model;
 
 public class Utility4 {
 
+    // Comentario en Utility 4 desde clase
 
 }
