@@ -2,6 +2,7 @@ KSOAP2
 
     http://simpligility.github.io/ksoap2-android/getting-started.html
     http://helpdev.com.br/2015/07/10/android-studio-gradle-adicionando-ksoap2-como-dependencia-adding-ksoap-dependency-to-gradle-project/
+    http://www.sgoliver.net/blog/acceso-a-servicios-web-soap-en-android-22/
 
     BUILD.GRADLE PROYECTO
     repositories {
@@ -17,3 +18,38 @@ KSOAP2
         // AÑADIMOS LA LINEA CON LA DEPENDENCIA  A KSOAP2
         compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.1'
     }
+
+    USO KSOAP2
+
+        String NAMESPACE = "http://sgoliver.net/";
+        String URL="http://10.0.2.2:1473/ServicioClientes.asmx";
+        String METHOD_NAME = "NuevoClienteSimple";
+        String SOAP_ACTION = "http://sgoliver.net/NuevoClienteSimple";
+        --------------------------------------------------------------------------
+        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+        request.addProperty("nombre", txtNombre.getText().toString());
+        request.addProperty("telefono", txtTelefono.getText().toString());
+        --------------------------------------------------------------------------
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(request);
+        --------------------------------------------------------------------------
+        HttpTransportSE transporte = new HttpTransportSE(URL);
+        try
+        {
+            transporte.call(SOAP_ACTION, envelope);
+
+            //Se procesa el resultado devuelto
+            //...
+        }
+        catch (Exception e)
+        {
+            txtResultado.setText("Error!");
+        }
+        --------------------------------------------------------------------------
+        SoapPrimitive resultado_xml =(SoapPrimitive)envelope.getResponse();
+        String res = resultado_xml.toString();
+        if(res.equals("1"))
+            txtResultado.setText("Insertado OK");
+        --------------------------------------------------------------------------
+
