@@ -1,0 +1,4 @@
+KSOAP
+http://simpligility.github.io/ksoap2-android/getting-started.html
+http://helpdev.com.br/2015/07/10/android-studio-gradle-adicionando-ksoap2-como-dependencia-adding-ksoap-dependency-to-gradle-project/
+
